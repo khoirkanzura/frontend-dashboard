@@ -3,7 +3,7 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "build": "vite build",
+        "build": "vite build && node -e \"const fs=require('fs'); if (fs.existsSync('public/build/.vite/manifest.json')) { fs.copyFileSync('public/build/.vite/manifest.json','public/build/manifest.json'); }\"",
         "dev": "vite"
     },
     "devDependencies": {
