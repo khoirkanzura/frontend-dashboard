@@ -3,10 +3,10 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "build": "vite build",
+        "build": "vite build --outDir public",
         "dev": "vite",
         "predeploy": "npm run build",
-        "deploy": "gh-pages -d dist"
+        "deploy": "gh-pages -d public"
     },
     "devDependencies": {
         "@tailwindcss/vite": "^4.0.0",
