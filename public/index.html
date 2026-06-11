@@ -4,49 +4,45 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BankKu Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <style>
-      :root {
-        --bg: #f5f7fa;
-        --card: #ffffff;
-        --text: #232323;
-        --muted: #718096;
-        --blue: #1814f3;
-        --dark: #343c6a;
-        --border: #e6eff5;
-      }
-      * { box-sizing: border-box; }
-      body {
-        margin: 0;
-        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        background: var(--bg);
-        color: var(--text);
-      }
-      .app { max-width: 1280px; margin: 0 auto; padding: 24px; }
-      .topbar { display:flex; justify-content:space-between; align-items:center; margin-bottom:24px; }
-      .brand { font-weight:700; font-size:1.1rem; color:var(--dark); }
-      .nav { display:flex; gap:16px; color:var(--muted); font-size:0.95rem; }
-      .nav .active { color:var(--blue); font-weight:600; }
-      .grid { display:grid; gap:20px; }
-      .grid-2 { grid-template-columns: 1.3fr 1fr; }
-      .card { background:var(--card); border:1px solid var(--border); border-radius:22px; padding:20px; box-shadow:0 8px 30px rgba(15,23,42,0.04); }
-      .row { display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; }
-      .title { font-size:1rem; font-weight:700; color:var(--dark); }
-      .muted { color:var(--muted); font-size:0.9rem; }
-      .balance-card { background:linear-gradient(135deg,#1814f3 0%,#343c6a 100%); color:white; border-radius:24px; padding:20px; }
-      .balance-top { display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; }
-      .chip { font-size:0.8rem; padding:6px 10px; border-radius:999px; background:rgba(255,255,255,0.16); }
-      .amount { font-size:2rem; font-weight:700; margin:6px 0; }
-      .mini-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; margin-top:16px; }
-      .mini-card { background:#f9fbff; border:1px solid var(--border); border-radius:16px; padding:14px; }
-      .list { display:grid; gap:14px; }
-      .item { display:flex; justify-content:space-between; align-items:center; padding-bottom:10px; border-bottom:1px solid #f0f4f8; }
-      .item:last-child { border-bottom:none; padding-bottom:0; }
-      .dot { width:10px; height:10px; border-radius:999px; display:inline-block; margin-right:8px; }
-      .chart { height:140px; margin-top:8px; }
-      .donut { width:140px; height:140px; border-radius:50%; background:conic-gradient(#1814f3 0 35%, #ff823c 35% 50%, #e735b8 50% 70%, #343c6a 70% 100%); margin:8px auto 0; position:relative; }
-      .donut::after { content:"70%"; position:absolute; inset:30px; background:white; border-radius:50%; display:grid; place-items:center; font-weight:700; color:var(--dark); }
-      .pill { display:inline-block; padding:6px 10px; border-radius:999px; background:#f5f7fa; color:var(--muted); font-size:0.8rem; }
-      @media (max-width:900px) { .grid-2 { grid-template-columns:1fr; } }
+      :root { --bg:#f5f7fa; --card:#fff; --text:#232323; --muted:#718096; --blue:#1814f3; --dark:#343c6a; --border:#e6eff5; }
+      *{box-sizing:border-box} body{margin:0;font-family:'Instrument Sans',sans-serif;background:var(--bg);color:var(--text)}
+      a{color:inherit;text-decoration:none}
+      .app{max-width:1440px;margin:0 auto;padding:20px 16px 32px}
+      .topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;gap:12px}
+      .brand{font-weight:700;font-size:1.05rem;color:var(--dark)}
+      .nav{display:flex;gap:14px;flex-wrap:wrap;color:var(--muted)}
+      .nav a.active,.nav a:hover{color:var(--blue);font-weight:700}
+      .grid{display:grid;gap:18px}
+      .grid-2{grid-template-columns:1.3fr 1fr}
+      .grid-3{grid-template-columns:1.2fr .8fr}
+      .card{background:var(--card);border:1px solid var(--border);border-radius:22px;padding:18px;box-shadow:0 8px 30px rgba(15,23,42,.04)}
+      .row{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+      .title{font-size:1rem;font-weight:700;color:var(--dark)}
+      .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:#f5f7fa;color:var(--muted);font-size:.8rem}
+      .balance-card{background:linear-gradient(135deg,#1814f3 0%,#343c6a 100%);color:white;border-radius:24px;padding:20px}
+      .balance-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+      .chip{font-size:.8rem;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.16)}
+      .amount{font-size:2rem;font-weight:700;margin:6px 0}
+      .mini-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:16px}
+      .mini-card{background:#f9fbff;border:1px solid var(--border);border-radius:16px;padding:14px}
+      .muted{color:var(--muted);font-size:.9rem}
+      .list{display:grid;gap:12px}
+      .item{display:flex;justify-content:space-between;align-items:center;padding-bottom:10px;border-bottom:1px solid #f0f4f8}
+      .item:last-child{border-bottom:none;padding-bottom:0}
+      .dot{width:10px;height:10px;border-radius:999px;display:inline-block;margin-right:8px}
+      .chart{height:140px;margin-top:8px}
+      .donut{width:140px;height:140px;border-radius:50%;background:conic-gradient(#1814f3 0 35%, #ff823c 35% 50%, #e735b8 50% 70%, #343c6a 70% 100%);margin:8px auto 0;position:relative}
+      .donut::after{content:'70%';position:absolute;inset:30px;background:white;border-radius:50%;display:grid;place-items:center;font-weight:700;color:var(--dark)}
+      .menu{display:grid;gap:10px;margin-top:12px}
+      .menu a{padding:12px 14px;border-radius:14px;background:#f9fbff;border:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+      .menu a:hover{background:#eef4ff}
+      @media (min-width:768px){.app{padding:24px 24px 40px}.grid-2{grid-template-columns:1.2fr .8fr}.grid-3{grid-template-columns:1.1fr .9fr}}
+      @media (max-width:640px){.topbar{flex-direction:column;align-items:flex-start}.menu a{padding:10px 12px}}
     </style>
   </head>
   <body>
@@ -54,9 +50,9 @@
       <div class="topbar">
         <div class="brand">BankKu Dashboard</div>
         <div class="nav">
-          <span class="active">Overview</span>
-          <span>Loans</span>
-          <span>Settings</span>
+          <a class="active" href="#">Overview</a>
+          <a href="#">Loans</a>
+          <a href="#">Settings</a>
         </div>
       </div>
 
@@ -75,11 +71,11 @@
           <div class="mini-grid">
             <div class="mini-card">
               <div class="muted">Income</div>
-              <div style="font-size:1.1rem;font-weight:700;color:var(--dark)">$2,430</div>
+              <div style="font-size:1.08rem;font-weight:700;color:var(--dark)">$2,430</div>
             </div>
             <div class="mini-card">
               <div class="muted">Expenses</div>
-              <div style="font-size:1.1rem;font-weight:700;color:var(--dark)">$1,240</div>
+              <div style="font-size:1.08rem;font-weight:700;color:var(--dark)">$1,240</div>
             </div>
           </div>
         </div>
@@ -90,28 +86,16 @@
             <span class="pill">Today</span>
           </div>
           <div class="list">
-            <div class="item">
-              <div><span class="dot" style="background:#ffbb38"></span>Card Deposit</div>
-              <div style="color:#ff4b4a;font-weight:700">-$850</div>
-            </div>
-            <div class="item">
-              <div><span class="dot" style="background:#396aff"></span>PayPal</div>
-              <div style="color:#16a34a;font-weight:700">+$2,500</div>
-            </div>
-            <div class="item">
-              <div><span class="dot" style="background:#16a34a"></span>Jemi Wilson</div>
-              <div style="color:#16a34a;font-weight:700">+$5,400</div>
-            </div>
+            <div class="item"><div><span class="dot" style="background:#ffbb38"></span>Card Deposit</div><div style="color:#ff4b4a;font-weight:700">-$850</div></div>
+            <div class="item"><div><span class="dot" style="background:#396aff"></span>PayPal</div><div style="color:#16a34a;font-weight:700">+$2,500</div></div>
+            <div class="item"><div><span class="dot" style="background:#16a34a"></span>Jemi Wilson</div><div style="color:#16a34a;font-weight:700">+$5,400</div></div>
           </div>
         </div>
       </div>
 
-      <div class="grid grid-2" style="margin-top:20px;">
+      <div class="grid grid-3" style="margin-top:18px;">
         <div class="card">
-          <div class="row">
-            <div class="title">Weekly Activity</div>
-            <span class="pill">Sat - Fri</span>
-          </div>
+          <div class="row"><div class="title">Weekly Activity</div><span class="pill">Sat - Fri</span></div>
           <svg class="chart" viewBox="0 0 320 140" xmlns="http://www.w3.org/2000/svg">
             <path d="M10 110 C40 95, 60 90, 80 85 S120 75, 140 70 S180 55, 200 65 S250 90, 280 55 S300 25, 310 20" stroke="#1814f3" stroke-width="4" fill="none" />
             <path d="M10 120 C40 115, 60 100, 80 95 S120 90, 140 85 S180 75, 200 80 S250 105, 280 85 S300 65, 310 60" stroke="#16c098" stroke-width="4" fill="none" />
@@ -119,11 +103,13 @@
         </div>
 
         <div class="card">
-          <div class="row">
-            <div class="title">Expense Statistics</div>
-            <span class="pill">This month</span>
-          </div>
+          <div class="row"><div class="title">Expense Statistics</div><span class="pill">This month</span></div>
           <div class="donut"></div>
+          <div class="menu">
+            <a href="#">Dashboard <i class="fa-solid fa-chevron-right"></i></a>
+            <a href="#">Loans <i class="fa-solid fa-chevron-right"></i></a>
+            <a href="#">Settings <i class="fa-solid fa-chevron-right"></i></a>
+          </div>
         </div>
       </div>
     </div>
