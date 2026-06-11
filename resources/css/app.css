@@ -4,6 +4,54 @@
 @source '../../storage/framework/views/*.php';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --color-primary-blue: #1814F3;
+    --color-dark-blue: #343C6A;
+    --color-gray-text: #718096;
+    --color-bg-main: #F5F7FA;
+    --color-border-light: #E6EFF5;
 }
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Toggle Switch Styles */
+.toggle-checkbox:checked {
+    right: 0;
+    border-color: #1814F3;
+}
+.toggle-checkbox:checked + .toggle-label {
+    background-color: #1814F3;
+}
+
+/* Form Styles */
+.form-input {
+    border-color: #F3F4F6;
+    outline: none;
+    transition: all 0.2s ease-in-out;
+}
+.form-input:focus {
+    border-color: #1814F3;
+    box-shadow: 0 0 0 3px rgba(24, 20, 243, 0.1);
+}
+
+/* Glassmorphism card details */
+.glass-card {
+    background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
