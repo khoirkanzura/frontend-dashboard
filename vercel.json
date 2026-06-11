@@ -1,5 +1,6 @@
 {
   "version": 2,
+  "framework": null,
   "env": {
     "APP_DEBUG": "true",
     "APP_ENV": "production",
