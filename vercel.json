@@ -1,7 +1,5 @@
 {
   "version": 2,
-  "framework": null,
-  "outputDirectory": "public",
   "env": {
     "APP_DEBUG": "true",
     "APP_ENV": "production",
