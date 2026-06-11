@@ -3,10 +3,10 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "build": "vite build --outDir public",
+        "build": "vite build --outDir dist && node -e \"const fs=require('fs'); fs.mkdirSync('dist',{recursive:true}); fs.copyFileSync('public/index.html','dist/index.html');\"",
         "dev": "vite",
         "predeploy": "npm run build",
-        "deploy": "gh-pages -d public"
+        "deploy": "gh-pages -d dist"
     },
     "devDependencies": {
         "@tailwindcss/vite": "^4.0.0",
