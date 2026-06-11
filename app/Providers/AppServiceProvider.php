@@ -18,6 +18,9 @@ class AppServiceProvider extends ServiceProvider
     {
         // Redirect storage path to /tmp on Vercel (read-only filesystem workaround)
         if (env('VERCEL_STORAGE_PATH')) {
+            // Force HTTPS on Vercel to prevent mixed content blocking
+            \Illuminate\Support\Facades\URL::forceScheme('https');
+
             $storagePath = env('VERCEL_STORAGE_PATH');
             $this->app->useStoragePath($storagePath);
 
