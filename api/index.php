@@ -1,3 +1,4 @@
+<?php
 echo "<pre>";
 echo "Current directory: " . __DIR__ . "\n";
 echo "Root directory: " . realpath(__DIR__ . '/..') . "\n";
