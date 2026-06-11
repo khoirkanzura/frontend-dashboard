@@ -1,115 +1,84 @@
-# Frontend Dashboard
+# BankKu - Financial Web Dashboard 🚀
 
-Proyek ini merupakan implementasi Web Dashboard yang dibuat sebagai bagian dari Technical Test Frontend Developer. Dashboard dikembangkan berdasarkan desain yang disediakan pada Figma dengan fokus pada kesesuaian tampilan, responsivitas, dan pengalaman pengguna.
+[![Laravel Version](https://img.shields.io/badge/Laravel-12.x-red.svg)](https://laravel.com)
+[![Tailwind CSS Version](https://img.shields.io/badge/TailwindCSS-4.x-38bdf8.svg)](https://tailwindcss.com)
+[![Vite](https://img.shields.io/badge/Vite-6.x-646cff.svg)](https://vitejs.dev)
 
-## Fitur
+Aplikasi Web Dashboard Finansial yang responsif dan interaktif, dikembangkan menggunakan **Laravel 12**, **Blade Templates**, dan **Tailwind CSS v4** (terintegrasi dengan Vite). Proyek ini merupakan hasil *slicing* figma dengan tingkat presisi tinggi (pixel-perfect) untuk kebutuhan Technical Test Frontend Developer.
 
-* Dashboard Overview
-* Loans Management Page
-* Settings Page
+---
 
-  * Edit Profile
-  * Preferences
-  * Security
-* Responsive Design (Desktop, Tablet, Mobile)
-* Sidebar Navigation
-* Interactive Components
-* Hover Effects dan Smooth Transitions
-* Modern Dashboard Interface
+## 🌟 Fitur Utama & Keunggulan Slicing
 
-## Teknologi yang Digunakan
+### 1. Dashboard Overview
+* **Interactive Summary Cards**: Tampilan balance card premium dengan mode gelap (dark theme) dan terang (light theme) lengkap dengan pattern SVG chip.
+* **Custom SVG Weekly Activity Chart**: Grafik batang interaktif dua warna yang diurutkan dari hari Sabtu hingga Jumat (Sat-Fri) sesuai spesifikasi Figma.
+* **Exploded Pie Chart (Expense Statistics)**: Grafik lingkaran interaktif yang memiliki efek terpisah (exploded) pada setiap sektornya dengan teks label persentase dinamis di dalam sektor.
+* **Bezier Wave & Dashed Grid (Balance History)**: Grafik garis berlekuk halus (smooth bezier path) dengan grid bergaris kotak putus-putus.
+* **Quick Transfer**: Slider profil pengguna interaktif untuk mempermudah transfer cepat.
 
-* Laravel 12
-* Blade Template Engine
-* Tailwind CSS
-* JavaScript
-* Vite
+### 2. Loans Management Page
+* **Statistic Widgets**: Widget ringkasan finansial (active loans, total debt, dll) dengan icon minimalis.
+* **Responsive Loans Table**: Tabel informasi pinjaman dengan layout yang menyesuaikan secara otomatis di mobile view (menggunakan card layout).
+* **Live Search**: Fitur penyaringan data pinjaman secara dinamis.
 
-## Struktur Halaman
+### 3. Settings Page (Tab-Based Forms)
+* **Tab Panel Switcher**: Perpindahan tab yang mulus tanpa refresh halaman (Edit Profile, Preferences, Security).
+* **Profile Image Preview**: Preview instan saat mengunggah foto profil baru.
+* **Session Persistence**: Semua perubahan data pada form disimpan secara aman di dalam file session Laravel, sehingga data tetap tersimpan saat navigasi halaman.
 
-### Dashboard
+---
 
-Menampilkan informasi utama dalam bentuk card, statistik, dan ringkasan data.
+## 🛠️ Detail Arsitektur & Struktur Kode
 
-### Loans
+Kode program dirancang menggunakan pendekatan modular dan reusable:
+* **Layouts**: Menggunakan system layout komponen `<x-layouts-app>` pada `resources/views/components/layouts-app.blade.php`.
+* **Components**: Komponen reusable terpisah pada direktori `resources/views/components/` (seperti `sidebar`, `navbar`, `card`, dan `credit-card`).
+* **Controllers**: Logika pengolahan data dipisahkan secara rapi di dalam controller:
+  * `DashboardController` untuk data keuangan dan grafik.
+  * `LoanController` untuk data pinjaman dan fitur pencarian.
+  * `SettingsController` untuk manajemen session profil pengguna.
 
-Menampilkan daftar data pinjaman dalam bentuk tabel yang responsif.
+---
 
-### Settings
+## 🚀 Cara Menjalankan Proyek (Zero-Config Setup)
 
-Menyediakan pengaturan pengguna yang terdiri dari:
+Proyek ini menggunakan driver session berbasis **file** untuk menyimpan perubahan data profile secara lokal tanpa memerlukan instalasi/konfigurasi database SQL eksternal.
 
-* Edit Profile
-* Preferences
-* Security
+### Langkah-langkah:
+1. **Clone repository**:
+   ```bash
+   git clone https://github.com/khoirkanzura/frontend-dashboard.git
+   cd frontend-dashboard
+   ```
+2. **Install dependensi PHP**:
+   ```bash
+   composer install
+   ```
+3. **Install dependensi JavaScript**:
+   ```bash
+   npm install
+   ```
+4. **Salin Environment Configuration**:
+   ```bash
+   cp .env.example .env
+   ```
+5. **Generate Application Key**:
+   ```bash
+   php artisan key:generate
+   ```
+6. **Jalankan Aplikasi & Asset Compiler**:
+   * Jalankan server lokal Laravel:
+     ```bash
+     php artisan serve
+     ```
+   * Jalankan Vite compiler (pilih salah satu):
+     * Mode Development (Hot-Reload): `npm run dev`
+     * Mode Production (Pre-compiled assets): `npm run build`
 
-## Responsivitas
+Aplikasi dapat diakses di browser melalui alamat: `http://127.0.0.1:8000`
 
-Website dirancang agar dapat menyesuaikan tampilan pada berbagai ukuran layar:
+---
 
-* Desktop
-* Tablet
-* Mobile
-
-## Instalasi
-
-Clone repository:
-
-```bash
-git clone https://github.com/khoirkanzura/frontend-dashboard.git
-```
-
-Masuk ke folder project:
-
-```bash
-cd frontend-dashboard
-```
-
-Install dependency PHP:
-
-```bash
-composer install
-```
-
-Install dependency JavaScript:
-
-```bash
-npm install
-```
-
-Salin file environment:
-
-```bash
-cp .env.example .env
-```
-
-Generate application key:
-
-```bash
-php artisan key:generate
-```
-
-Jalankan development server:
-
-```bash
-php artisan serve
-```
-
-Jalankan Vite:
-
-```bash
-npm run dev
-```
-
-## Tujuan Pengembangan
-
-Proyek ini dibuat untuk memenuhi kebutuhan Technical Test Frontend Developer dengan fokus pada:
-
-* Implementasi desain dari Figma
-* Pengembangan antarmuka yang responsif
-* Struktur kode yang rapi dan mudah dipelihara
-* Pengalaman pengguna yang baik pada berbagai perangkat
-
-## Author
-
-Khoir Karol Nurzuraidah
+## 👤 Author
+* **Khoir Karol Nurzuraidah** - [GitHub Profile](https://github.com/khoirkanzura)
