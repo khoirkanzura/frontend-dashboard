@@ -11,7 +11,18 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->singleton(\Illuminate\Foundation\Vite::class, function () {
+            return new class extends \Illuminate\Foundation\Vite {
+                protected function manifestPath($buildDirectory)
+                {
+                    $customPath = base_path('storage/manifest.json');
+                    if (file_exists($customPath)) {
+                        return $customPath;
+                    }
+                    return parent::manifestPath($buildDirectory);
+                }
+            };
+        });
     }
 
     public function boot(): void

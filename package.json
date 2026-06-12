@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "vite build",
+    "build": "vite build && node -e \"const fs = require('fs'); let m = 'public/build/manifest.json'; if (!fs.existsSync(m) && fs.existsSync('public/build/.vite/manifest.json')) m = 'public/build/.vite/manifest.json'; if (fs.existsSync(m)) { fs.copyFileSync(m, 'storage/manifest.json'); console.log('Manifest copied to storage'); }\"",
     "dev": "vite"
   },
   "devDependencies": {
