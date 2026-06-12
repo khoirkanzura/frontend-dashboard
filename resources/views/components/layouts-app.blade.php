@@ -13,7 +13,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     
     <!-- Vite Assets -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @if(file_exists(public_path('build/manifest.json')))
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @else
+        <p style="color:red">
+            Vite manifest tidak ditemukan.
+        </p>
+    @endif
 </head>
 <body class="bg-bg-main text-dark-blue font-sans antialiased min-h-screen">
     <!-- Mobile/Tablet Sidebar Overlay -->
