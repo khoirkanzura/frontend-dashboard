@@ -13,3 +13,16 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 Route::get('/loans', [LoanController::class, 'index'])->name('loans');
 Route::get('/settings', [SettingsController::class, 'index'])->name('settings');
 Route::post('/settings/update', [SettingsController::class, 'update'])->name('settings.update');
+
+Route::get('/debug-files', function () {
+    return [
+        'base_path' => base_path(),
+        'storage_path' => storage_path(),
+        'manifest_exists_storage' => file_exists(base_path('storage/manifest.json')),
+        'manifest_exists_public' => file_exists(public_path('build/manifest.json')),
+        'manifest_exists_public_vite' => file_exists(public_path('build/.vite/manifest.json')),
+        'storage_files' => file_exists(base_path('storage')) ? scandir(base_path('storage')) : null,
+        'public_files' => file_exists(public_path()) ? scandir(public_path()) : null,
+        'public_build_files' => file_exists(public_path('build')) ? scandir(public_path('build')) : null,
+    ];
+});
