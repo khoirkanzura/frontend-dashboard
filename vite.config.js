@@ -3,10 +3,6 @@ import laravel from 'laravel-vite-plugin';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-    build: {
-        manifest: 'manifest.json',
-    },
-
     plugins: [
         laravel({
             input: [
@@ -17,4 +13,10 @@ export default defineConfig({
         }),
         tailwindcss(),
     ],
+
+    build: {
+        manifest: true,
+        outDir: 'public/build',
+        emptyOutDir: true
+    }
 });

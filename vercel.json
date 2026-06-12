@@ -1,8 +1,7 @@
 {
   "version": 2,
-  "framework": null,
 
-  "buildCommand": "npm install --include=dev && npm run build",
+  "buildCommand": "composer install && npm install && npm run build",
 
   "functions": {
     "api/index.php": {
@@ -35,15 +34,8 @@
   ],
 
   "env": {
-    "APP_DEBUG": "true",
     "APP_ENV": "production",
-    "APP_CONFIG_CACHE": "/tmp/config.php",
-    "APP_EVENTS_CACHE": "/tmp/events.php",
-    "APP_PACKAGES_CACHE": "/tmp/packages.php",
-    "APP_ROUTES_CACHE": "/tmp/routes.php",
-    "APP_SERVICES_CACHE": "/tmp/services.php",
-    "VIEW_COMPILED_PATH": "/tmp/views",
-    "VERCEL_STORAGE_PATH": "/tmp/storage",
+    "APP_DEBUG": "false",
     "CACHE_DRIVER": "array",
     "SESSION_DRIVER": "cookie",
     "LOG_CHANNEL": "stderr"
