@@ -26,3 +26,12 @@ Route::get('/debug-files', function () {
         'public_build_files' => file_exists(public_path('build')) ? scandir(public_path('build')) : null,
     ];
 });
+
+Route::get('/debug-build', function () {
+    return response()->json([
+        'public_exists' => is_dir(public_path()),
+        'build_exists' => is_dir(public_path('build')),
+        'manifest_exists' => file_exists(public_path('build/manifest.json')),
+        'manifest_path' => public_path('build/manifest.json'),
+    ]);
+});
