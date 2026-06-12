@@ -13,7 +13,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     
     <!-- Vite Assets -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @php
+        $manifestPath = public_path('build/manifest.json');
+        $hasManifest = file_exists($manifestPath);
+    @endphp
+
+    @if ($hasManifest)
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @else
+        <link rel="stylesheet" href="{{ asset('build/assets/app.css') }}">
+        <script type="module" src="{{ asset('build/assets/app.js') }}"></script>
+    @endif
 </head>
 <body class="bg-bg-main text-dark-blue font-sans antialiased min-h-screen">
     <!-- Mobile/Tablet Sidebar Overlay -->

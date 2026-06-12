@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "vite build && node -e \"const fs = require('fs'); let m = 'public/build/manifest.json'; if (!fs.existsSync(m) && fs.existsSync('public/build/.vite/manifest.json')) m = 'public/build/.vite/manifest.json'; if (fs.existsSync(m)) { fs.copyFileSync(m, 'storage/manifest.json'); console.log('Manifest copied to storage'); }\"",
+    "build": "vite build && node -e \"const fs=require('fs'); const path=require('path'); const outDir='public/build'; const manifestPath=path.join(outDir,'.vite','manifest.json'); const finalManifest=path.join(outDir,'manifest.json'); if (fs.existsSync(manifestPath)) { const manifest=JSON.parse(fs.readFileSync(manifestPath,'utf8')); fs.copyFileSync(manifestPath, finalManifest); const cssEntry=Object.entries(manifest).find(([key])=>key==='resources/css/app.css')?.[1]?.file; const jsEntry=Object.entries(manifest).find(([key])=>key==='resources/js/app.js')?.[1]?.file; if (cssEntry) { fs.copyFileSync(path.join(outDir,'assets',cssEntry), path.join(outDir,'assets','app.css')); } if (jsEntry) { fs.copyFileSync(path.join(outDir,'assets',jsEntry), path.join(outDir,'assets','app.js')); } console.log('Vite assets prepared for deployment'); }\"",
     "dev": "vite"
   },
   "devDependencies": {
