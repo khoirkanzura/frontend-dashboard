@@ -9,7 +9,6 @@
       "runtime": "vercel-php@0.9.0",
       "includeFiles": [
         "public/build/**",
-        "public/build/.vite/**",
         "resources/views/**",
         "bootstrap/cache/**"
       ]
